@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSTM Stock Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📈 LSTM Stock Price Predictor</h1>
+            <p>Deep Learning-based Next-Day Price Prediction</p>
+        </header>
+
+        <!-- INPUT SECTION -->
+        <div class="input-section">
+            <div class="input-group">
+                <label for="stock">Stock Symbol:</label>
+                <select id="stock">
+                    <option value="RELIANCE.NS">RELIANCE.NS (Reliance Industries)</option>
+                    <option value="TCS.NS">TCS.NS (Tata Consultancy)</option>
+                    <option value="INFY.NS">INFY.NS (Infosys)</option>
+                    <option value="HDFCBANK.NS">HDFCBANK.NS (HDFC Bank)</option>
+                    <option value="TATAMOTORS.NS">TATAMOTORS.NS (Tata Motors)</option>
+                    <option value="AAPL">AAPL (Apple Inc.)</option>
+                    <option value="GOOGL">GOOGL (Google)</option>
+                    <option value="TSLA">TSLA (Tesla)</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" value="2022-01-01">
+            </div>
+
+            <div class="input-group">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" value="2025-01-01">
+            </div>
+
+            <button id="predictBtn" onclick="makePrediction()">Predict</button>
+        </div>
+
+        <!-- LOADING INDICATOR -->
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Training LSTM model and making prediction...</p>
+        </div>
+
+        <!-- ERROR MESSAGE -->
+        <div id="error" class="error" style="display: none;"></div>
+
+        <!-- GRAPH SECTION -->
+        <div id="chartSection" class="chart-section" style="display: none;">
+            <h2>📊 Price Chart</h2>
+            <canvas id="priceChart"></canvas>
+        </div>
+
+        <!-- PREDICTION RESULTS -->
+        <div id="results" class="results-section" style="display: none;">
+            <div class="result-card">
+                <div class="result-row">
+                    <span class="label">Current Price:</span>
+                    <span class="value" id="currentPrice">₹0.00</span>
+                </div>
+                <div class="result-row">
+                    <span class="label">Predicted Price:</span>
+                    <span class="value highlight" id="predictedPrice">₹0.00</span>
+                </div>
+                <div class="result-row">
+                    <span class="label">Expected Change:</span>
+                    <span class="value" id="priceChange">+0.0%</span>
+                </div>
+            </div>
+
+            <div class="decision-card">
+                <div class="decision-header">
+                    <span class="label">Prediction:</span>
+                    <span class="decision" id="decision">HOLD</span>
+                </div>
+                <div class="confidence-row">
+                    <span class="label">Confidence:</span>
+                    <span class="confidence" id="confidence">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by LSTM Neural Networks | Data from Yahoo Finance</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
