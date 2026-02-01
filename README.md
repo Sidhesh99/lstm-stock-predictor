@@ -155,30 +155,6 @@ else              → HOLD (confidence: 50-70%)
 
 ---
 
-## 🎤 Interview Talking Points
-
-### "Tell me about your stock prediction project"
-
-**Answer**:
-> "I built an LSTM-based stock prediction system that trains a neural network on historical price data to forecast next-day movements. The system fetches real-time data from Yahoo Finance, preprocesses it using sliding windows, trains a 2-layer LSTM model, and displays predictions through a web interface. It converts the raw price prediction into actionable buy/sell/hold recommendations with confidence scores."
-
-### "What challenges did you face?"
-
-**Answer**:
-> "The main challenge was balancing model complexity with training time. I optimized by using 60-day lookback windows and 10 epochs, which provides good predictions in ~20 seconds. I also had to handle edge cases like insufficient data and market holidays. For the UI, I focused on showing only essential information - the historical chart and predicted point - to avoid overwhelming users."
-
-### "How did you evaluate model performance?"
-
-**Answer**:
-> "I use Mean Squared Error during training. For real-world validation, I calculate prediction accuracy by comparing predicted vs. actual prices. The confidence score is derived from the magnitude of predicted change - larger movements get higher confidence since they're more actionable."
-
-### "What would you improve?"
-
-**Answer**:
-> "Three improvements I'd make: (1) Add model persistence to avoid retraining on every request, (2) Implement backtesting to show historical prediction accuracy, (3) Add multiple time horizons - not just next-day but weekly/monthly predictions."
-
----
-
 ## 📁 Project Structure
 
 ```
@@ -241,12 +217,6 @@ stock_predictor/
 
 ---
 
-## 📝 License
-
-This project is for educational/portfolio purposes.
-
----
-
 ## 👨‍💻 Developer Notes
 
 ### Model Parameters
@@ -271,10 +241,3 @@ This project is for educational/portfolio purposes.
 
 ---
 
-## 🤝 Contributing
-
-This is a portfolio project, but suggestions are welcome!
-
----
-
-**Built with ❤️ using Deep Learning and Flask**
